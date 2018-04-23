@@ -2,7 +2,7 @@ import { Component } from '@nestjs/common';
 
 @Component()
 export class TableService {
-    add(newRecord) {
+    add(newEmployee) {
         const Pusher = require('pusher');
 
         var pusher = new Pusher({
@@ -13,6 +13,6 @@ export class TableService {
             encrypted: true
           });
 
-          pusher.trigger('records', 'new-record', newRecord);
+          pusher.trigger('employees', 'new-employee', newEmployee);
     }
 }
