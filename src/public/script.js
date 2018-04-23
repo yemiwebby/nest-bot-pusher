@@ -1,3 +1,11 @@
+const form = document.getElementById('add-employees');
+
+const formData = [
+  $('#name').vas
+]
+
+
+
 const app = {
     buildForm() {
       return [
@@ -26,17 +34,14 @@ const app = {
       console.log(addedRowNode);
       $(addedRowNode).addClass('highlight');
     },
-    selectRow(dataTable) {
-      if ($(this).hasClass('selected')) {
-        $(this).removeClass('selected');
-      } else {
-        dataTable.$('tr.selected').removeClass('selected');
-        $(this).addClass('selected');
-      }
-    },
-    removeRow(dataTable) {
-      dataTable.row('.selected').remove().draw( false );
-    },
+    // selectRow(dataTable) {
+    //   if ($(this).hasClass('selected')) {
+    //     $(this).removeClass('selected');
+    //   } else {
+    //     dataTable.$('tr.selected').removeClass('selected');
+    //     $(this).addClass('selected');
+    //   }
+    // },
     start() {
       const dataTable = $('#realtime').DataTable({
         data: dataSet,
@@ -55,8 +60,6 @@ const app = {
       $('#realtime tbody').on('click', 'tr', function(){
         self.selectRow.bind(this, dataTable)();
       });
-      $('#remove').on('click', this.removeRow.bind(this, dataTable));
-
 
       // Pusher
       var pusher = new Pusher('e6c6d225b2ca71968dcc', {
