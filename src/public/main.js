@@ -1,56 +1,43 @@
 
-const app = {
-    buildForm() {
-      return [
-        $('#name').val(),
-        $('#position').val(),
-        $('#office').val(),
-        $('#extn').val(),
-        $('#startDate').val().replace(new RegExp('-', 'g'), '/')
-      ];
-    },
+new Vue({
+  el: '#app',
+  data: {
+    chats: [],
+  },
+  created() {
+    let pusher = new Pusher('YOUR_API_KEY', {
+      cluster: 'CLUSTER',
+      encrypted: true
+    });
     
-    processForm() {
-      const formData = this.buildForm();
-      const baseURL = 'http://localhost:3000';
-      axios.post(`${baseURL}/record`, formData)
-        .then(response => console.log(response));
-    },
-
-    addRow(dataTable, data) {
-      const addedRow = dataTable.row.add(data).draw();
-      addedRow.show().draw(false);
-  
-      const addedRowNode = addedRow.node();
-      $(addedRowNode).addClass('highlight');
-    },
-
-    start() {
-      const dataTable = $('#realtime').DataTable({
-        data: dataSet,
-        columns: [
-          { title: 'Name' },
-          { title: 'Position' },
-          { title: 'Office' },
-          { title: 'Extn.' },
-          { title: 'Start date' }
-        ]
-      });
-  
-      $('#add-employee').on('click', this.processForm.bind(this));
-     
-      // Pusher
-      var pusher = new Pusher('YOUR_API_KEY', {
-        cluster: 'CLUSTER',
-        encrypted: true
-      });
-  
-      var channel = pusher.subscribe('employees');
-      channel.bind('new-employee', (data) => {
-        this.addRow(dataTable, data);
-      });
+    const channel = pusher.subscribe('bot');
+    channel.bind('bot-response', data => {
+      console.log(data);
+      const response = {
+        speech: data.speech,
+        query: data.query
+      }
+      
+      this.chats.push(response);
+    });
+  },
+  methods: {
+    
+    sendChat(event) {
+      const chatMessage = event.target.value;
+      
+      if(event.keyCode === 13 && !event.shiftKey) {
+        const chat = {
+          message: chatMessage
+        };
+        
+        event.target.value = "";
+        
+        axios.post('/', chat)
+        .then( data => {
+          console.log(data);
+        });
+      }
     }
-  };
-  
-  $(document).ready(() => app.start());
-  
+  }
+})
