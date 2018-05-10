@@ -1,17 +1,22 @@
 ## Build a realtime table with DataTables and Nest.js
 
-A tutorial to showcase realtime functionality of a dataTable using Nest.js and Pusher. More details [here]().
+A a chat bot application built with Nest.js, Dialogflow and Pusher.
+
+Screenshot of the demo app
+
+![nest-bot-log](https://user-images.githubusercontent.com/19610753/39894761-d47f2936-549f-11e8-9f33-0cecf9b56a05.gif)
+
 
 ## Getting Started
 
 ### Clone the repository
 ```bash
-$ git clone https://github.com/christiannwamba/pusher-nest-datatable.git
+$ git clone https://github.com/yemiwebby/nest-bot-pusher.git
 ```
 
 ### Change directory
 ```bash
-$ cd pusher-nest-datatable
+$ cd nest-bot-pusher
 ```
 
 ### Install dependencies
@@ -26,3 +31,4 @@ A basic knowledge of TypeScript and Node.js
 
 * [Nest.js](https://nestjs.com/) - A progressive Node.js framework for building efficient and scalable server-side applications.
 * [Pusher](https://pusher.com/) - A Node.js client to interact with the Pusher REST API
+* [DialogFlow](https://dialogflow.com/) - 
