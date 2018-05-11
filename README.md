@@ -4,7 +4,8 @@ A a chat bot application built with Nest.js, Dialogflow and Pusher.
 
 Screenshot of the demo app
 
-![nest-bot-log](https://user-images.githubusercontent.com/19610753/39894761-d47f2936-549f-11e8-9f33-0cecf9b56a05.gif)
+![final-bot-result](https://user-images.githubusercontent.com/19610753/39927451-2672f8f0-552a-11e8-86fa-8f57482b300b.gif)
+
 
 
 ## Getting Started
