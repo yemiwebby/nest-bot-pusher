@@ -5,7 +5,7 @@ import axios from 'axios';
 export class BotService {
     
     private baseURL: string = "https://api.dialogflow.com/v1/query?v=20150910";
-    private token: string = "YOUR_AGENT_PRIVATE_TOKEN";
+    private token: string = "YOUR_ACCESS_TOKEN";
     
     sendDialogue(info) {
         
